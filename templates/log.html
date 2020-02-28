@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{{ title }}</title>
+    <meta name="description" content="OPAS - Gestione degli allarmi tramite Iono PI">
+    <meta name="author" content="OPAS - Gestione degli allarmi tramite Iono PI">
+    <link rel="icon" href="img/favicon.png">
+
+    <script src="plugin/jquery-3.4.1.min.js"></script>
+    <script src="plugin/popper.min.js"></script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="plugin/bootstrap-4.4.1/css/bootstrap.min.css">
+    <script src="plugin/bootstrap-4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- toggle https://gitbrent.github.io/bootstrap4-toggle/ -->
+    <link  href="plugin/bootstrap-toggle/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="plugin/bootstrap-toggle/bootstrap4-toggle.min.js"></script>
+
+    <!-- template customization -->
+    <script src="js/log.js?v=1.0"></script>
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+</head>
+
+<body>
+    <div class="container-xl" id="main">
+        <header>
+            <h1 id="title-big">OPAS - Gestione degli allarmi tramite Iono PI</h1>
+            <h1 id="title-little">OPAS - Allarmi Iono PI</h1>
+            <div class="row">
+                <div class="col-md-12 mt-2">
+                    <a href="/" class="like-menu btn btn-lg btn-secondary">Stato stazione</a>
+                    <a href="/log" class="like-menu btn btn-lg btn-primary ml-2" id="log">Visualizza log</a>
+                </div>
+            </div>
+        </header>
+        <content>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="all-log"></div>
+                </div>
+            </div>
+        </content>
+    </div>
+    <div class="container-xl" id="footer">
+        &copy; OPAS 2020 - tutti i diritti sono riservati.
+    </div>
+</body>
+</html>

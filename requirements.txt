@@ -1,0 +1,14 @@
+#
+####### requirements.txt #######
+#
+###### Requirements without Version Specifiers ######
+cherrypy
+jinja2
+subprocess
+platform
+datetime
+time
+simplejson
+re
+logging
+logging.handlers
