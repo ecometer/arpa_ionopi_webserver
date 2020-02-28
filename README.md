@@ -12,7 +12,7 @@ Setup
   * git clone https://github.com/ecometer/arpa_ionopi_webserver.git ~/bin/webserver/
   * chmod +x ~/bin/webserver/*.py
 
-  * pip3 install -r ~/bin/pydas/requirements.txt
+  * pip3 install -r ~/bin/webserver/requirements.txt
 
   * python3 ~/bin/webserver/webapp.py
   * ~/bin/webserver/start_webapp.sh
