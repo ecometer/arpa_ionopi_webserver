@@ -8,12 +8,12 @@ Setup
   * sudo apt-get install python3-pip
   * sudo apt-get install git-core
 
-  * mkdir -p ~/bin/webserver
-  * git clone https://github.com/ecometer/arpa_ionopi_webserver.git ~/bin/webserver/
-  * chmod +x ~/bin/webserver/*.py
+  * mkdir -p $HOME/bin/webserver
+  * git clone https://github.com/ecometer/arpa_ionopi_webserver.git $HOME/bin/webserver/
+  * chmod +x $HOME/bin/webserver/*.py
 
-  * pip3 install -r ~/bin/webserver/requirements.txt
+  * pip3 install -r $HOME/bin/webserver/requirements.txt
 
-  * python3 ~/bin/webserver/webapp.py
-  * ~/bin/webserver/start_webapp.sh
-  * ~/bin/webserver/stop_webapp.sh
+  * python3 $HOME/bin/webserver/webapp.py
+  * $HOME/bin/webserver/start_webapp.sh
+  * $HOME/bin/webserver/stop_webapp.sh
