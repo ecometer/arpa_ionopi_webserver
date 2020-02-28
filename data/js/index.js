@@ -7,7 +7,8 @@ $( document ).ready(function() {
     $("#digOut").hide();
 
     // run status every 30 seconds
-    setInterval(checkStatus, 30000);
+    setInterval(resetForm, 5000);
+    setInterval(checkStatus, 5000);
 
     // get iono status
     $("#status").click(function(e) {
@@ -44,8 +45,10 @@ function resetForm() {
     $(".clear-txt").prop("disabled", true);
 
     // TOGGLE: https://gitbrent.github.io/bootstrap4-toggle/
+
+    /*$('.bt-toggle').bootstrapToggle('enable');
     $('.bt-toggle').bootstrapToggle('off');
-    $('.bt-toggle').bootstrapToggle('disable');
+    $('.bt-toggle').bootstrapToggle('disable');*/
 
     $('.change-light').removeClass('light-off light-on');
     $('.change-light').addClass('light-off');
@@ -68,21 +71,33 @@ function checkStatus() {
             var di = res.digitalin;
             if(di.di1 == 1){
                 $('#D1').bootstrapToggle('on');
+            }else{
+                $('#D1').bootstrapToggle('off');
             }
             if(di.di2 == 1){
                 $('#D2').bootstrapToggle('on');
+            }else{
+                $('#D2').bootstrapToggle('off');
             }
             if(di.di3 == 1){
                 $('#D3').bootstrapToggle('on');
+            }else{
+                $('#D3').bootstrapToggle('off');
             }
             if(di.di4 == 1){
                 $('#D4').bootstrapToggle('on');
+            }else{
+                $('#D4').bootstrapToggle('off');
             }
             if(di.di5 == 1){
                 $('#D5').bootstrapToggle('on');
+            }else{
+                $('#D5').bootstrapToggle('off');
             }
             if(di.di6 == 1){
                 $('#D6').bootstrapToggle('on');
+            }else{
+                $('#D6').bootstrapToggle('off');
             }
             $('.bt-toggle').bootstrapToggle('disable');
 
