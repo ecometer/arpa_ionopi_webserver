@@ -79,29 +79,51 @@ def tail(f, window=1):
         end -= nread
     return b'<br>'.join(b''.join(reversed(data)).splitlines()[-window:])
 
-def runCommand(command, option):
+def runCommands():
     try:
+
+        # Invoke the shell script (without shell involvement)
+        # and pass its output streams through.
+        # run()'s return value is an object with information about the completed process.
+        cherrypy.log("Running command: di x")
+        di1 = subprocess.check_output(['iono', 'di1'])
+        di2 = subprocess.check_output(['iono', 'di2'])
+        di3 = subprocess.check_output(['iono', 'di3'])
+        di4 = subprocess.check_output(['iono', 'di4'])
+        di5 = subprocess.check_output(['iono', 'di5'])
+        di6 = subprocess.check_output(['iono', 'di6'])
+        #cherrypy.log("Process return code: {}".format(di1.strip()))
+        #cherrypy.log("Process return code: {}".format("high" in str(di1.strip())))
+
+        cherrypy.log("Running command: ai x")
+        ai1 = subprocess.check_output(['iono', 'ai1'])
+        ai2 = subprocess.check_output(['iono', 'ai2'])
+
+        cherrypy.log("Running command: 1wire x")
+        #onew1 = subprocess.check_output(['1wire bus', '1'])
+        onew1 = 0
+
         return simplejson.dumps({
             'result': 'success',
             'digitalin' : {
-                'di1' : 1,
-                'di2' : 0,
-                'di3' : 0,
-                'di4' : 0,
-                'di5' : 0,
-                'di6' : 1
+                'di1' : 1 if ("high" in str(di1.strip())) else 0,
+                'di2' : 1 if ("high" in str(di2.strip())) else 0,
+                'di3' : 1 if ("high" in str(di3.strip())) else 0,
+                'di4' : 1 if ("high" in str(di4.strip())) else 0,
+                'di5' : 1 if ("high" in str(di5.strip())) else 0,
+                'di6' : 1 if ("high" in str(di6.strip())) else 0,
             },
             'analog' : {
-                'a1' : 1.222,
-                'a2' : 0.4444
+                'a1' : round(float(ai1.strip()), 2),
+                'a2' : round(float(ai2.strip()), 2),
             },
             'wire' : {
-                'w1' : 22.2323
+                'w1' : round(float(onew1), 2),
             },
             'digitalout' : {
-                'do1' : 1,
+                'do1' : 0,
                 'do2' : 0,
-                'do3' : 1,
+                'do3' : 0,
                 'do4' : 0,
             }
         })
@@ -128,7 +150,7 @@ class WebApp(object):
 
         #Testing logger
         today = datetime.datetime.today()
-        cherrypy.log("{0} -- Main pahe".format(today.strftime("%Y%m%d-%H%M%S")))
+        cherrypy.log("{0} -- Main page".format(today.strftime("%Y%m%d-%H%M%S")))
 
         tmpl = env.get_template('index.html')
         return tmpl.render(title='OPAS - Gestione degli allarmi tramite Iono PI', target='WebApp')
@@ -153,16 +175,15 @@ class WebApp(object):
     @cherrypy.expose
     def get_status(self):
         cherrypy.log("Get Iono status")
-        json_res = runCommand('/home/ecometer/vpn/connect2cva.sh', 'start')
+        json_res = runCommands()
         return json_res
-
 
     @cherrypy.expose
     def get_log(self):
         try:
             cherrypy.log("Read the current log file")
             # check file exists
-            log_filename = '/Users/alessiatreves/Downloads/webapp/log/Web.log'
+            log_filename = '/home/pi/bin/pydas/log/pydas.py.log'
             if not os.path.isfile(log_filename):
                 return simplejson.dumps({
                    'result': 'error',
@@ -198,6 +219,7 @@ if __name__ == '__main__':
     # application log path
     app_path = os.path.dirname(os.path.realpath(__file__))
     log_path = os.path.join(app_path, 'log')
+    logging.info("log_path: %s: ", log_path)
     if not os.path.exists(log_path):
         os.mkdir(log_path)
 
