@@ -4,10 +4,5 @@
 ###### Requirements without Version Specifiers ######
 cherrypy==8.0.1
 jinja2
-platform
 datetime
-time
 simplejson
-re
-logging
-logging.handlers
