@@ -2,9 +2,8 @@
 ####### requirements.txt #######
 #
 ###### Requirements without Version Specifiers ######
-cherrypy
+cherrypy==8.0.1
 jinja2
-subprocess
 platform
 datetime
 time
